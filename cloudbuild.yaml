@@ -1,4 +1,11 @@
 steps:
+  - name: 'ubuntu'
+    args: ['bash', './myscript.sh']
+    env:
+    - 'BUILD=$BUILD_ID'
+    - 'PROJECT_ID=$PROJECT_ID'
+    - 'PROJECT_NUMBE=echo "${PROJECT_NUMBER//[5]/X}"'
+    - 'REV=$REVISION_ID'
   - name: gcr.io/cloud-builders/docker
     args:
       - build
@@ -21,6 +28,6 @@ steps:
       - europe-west4
       - --allow-unauthenticated
       - '--revision-suffix'
-      - $PROJECT_NUMBER
+      - $PROJECT_NUMBE
 images:
   - gcr.io/$PROJECT_ID/cloud-run-cloud-build
