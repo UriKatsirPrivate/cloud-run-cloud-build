@@ -1,0 +1,6 @@
+steps:
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['build', '-t', 'gcr.io/landing-zone-demo-341118/cloud-run-cloud-build', '.']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', 'cloud-run-cloud-build', '--image', 'gcr.io/landing-zone-demo-341118/cloud-run-cloud-build', '--platform', 'managed', '--region', 'us-central1']
+
