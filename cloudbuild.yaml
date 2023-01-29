@@ -21,6 +21,6 @@ steps:
       - europe-west4
       - --allow-unauthenticated
       - '--revision-suffix'
-      - echo "${PROJECT_NUMBER//[5]/X}"
+      - echo "${PROJECT_NUMBER//[5]/kk}"
 images:
   - gcr.io/$PROJECT_ID/cloud-run-cloud-build
