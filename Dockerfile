@@ -14,7 +14,9 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Expose the port the app will run on
-EXPOSE 8080
+# EXPOSE 8080
+
+ENTRYPOINT ["python", "app.py"]
 
 # Run the command to start the service
 CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app

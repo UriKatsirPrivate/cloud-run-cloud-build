@@ -3,3 +3,6 @@ Flask>=2.2.2
 
 # https://pypi.org/project/rook/
 # rook>=0.1.179
+
+# https://pypi.org/project/waitress/
+waitress>=2.1.2
