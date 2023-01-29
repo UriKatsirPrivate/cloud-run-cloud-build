@@ -1,7 +1,7 @@
 substitutions:
   _PROJECT_NUMBE: echo "${PROJECT_NUMBER//[5]/kk}"
 steps:
-  - name: 'gcr.io/cloud-builders/bash'
+  - name: 'ubuntu'
     args: ['-c', 'echo "${PROJECT_NUMBER//[5]/kk}"']
   - name: gcr.io/cloud-builders/docker
     args:
