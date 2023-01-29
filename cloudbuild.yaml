@@ -1,6 +1,8 @@
 substitutions:
   _PROJECT_NUMBE: echo "${PROJECT_NUMBER//[5]/kk}"
 steps:
+  - name: 'gcr.io/cloud-builders/bash'
+    args: ['-c', 'echo "${PROJECT_NUMBER//[5]/kk}"']
   - name: gcr.io/cloud-builders/docker
     args:
       - build
@@ -23,6 +25,6 @@ steps:
       - europe-west4
       - --allow-unauthenticated
       - '--revision-suffix'
-      - ${_PROJECT_NUMBE}
+      - $PROJECT_NUMBER
 images:
   - gcr.io/$PROJECT_ID/cloud-run-cloud-build
