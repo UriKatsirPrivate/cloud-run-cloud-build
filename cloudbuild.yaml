@@ -21,6 +21,6 @@ steps:
       - europe-west4
       - --allow-unauthenticated
       - '--revision-suffix'
-      - v3
+      - $TAG_NAME
 images:
   - gcr.io/$PROJECT_ID/cloud-run-cloud-build
