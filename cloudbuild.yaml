@@ -1,14 +1,14 @@
 steps:
-  # - name: gcr.io/cloud-builders/docker
-  #   args:
-  #     - build
-  #     - '-t'
-  #     - gcr.io/landing-zone-demo-341118/cloud-run-cloud-build
-  #     - .
-  # - name: gcr.io/cloud-builders/docker
-  #   args:
-  #     - push
-  #     - gcr.io/landing-zone-demo-341118/cloud-run-cloud-build
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - gcr.io/$PROJECT_ID/cloud-run-cloud-build
+      - .
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - gcr.io/$PROJECT_ID/cloud-run-cloud-build
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: gcloud
     args:
@@ -16,9 +16,11 @@ steps:
       - deploy
       - cloud-run-cloud-build
       - '--image'
-      - gcr.io/landing-zone-demo-341118/cloud-run-cloud-build
+      - gcr.io/$PROJECT_ID/cloud-run-cloud-build
       - '--region'
-      - us-central1
+      - europe-west4
       - --allow-unauthenticated
+      - '--revision-suffix'
+      - v3
 images:
-  - gcr.io/landing-zone-demo-341118/cloud-run-cloud-build
+  - gcr.io/$PROJECT_ID/cloud-run-cloud-build
