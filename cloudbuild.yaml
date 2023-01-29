@@ -1,3 +1,5 @@
+substitutions:
+  _PROJECT_NUMBE: echo "${PROJECT_NUMBER//[5]/kk}"
 steps:
   - name: gcr.io/cloud-builders/docker
     args:
@@ -24,5 +26,3 @@ steps:
       - ${_PROJECT_NUMBE}
 images:
   - gcr.io/$PROJECT_ID/cloud-run-cloud-build
-substitutions:
-    _PROJECT_NUMBE: echo "${PROJECT_NUMBER//[5]/kk}"
