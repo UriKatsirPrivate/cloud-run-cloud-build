@@ -1,30 +1,24 @@
-substitutions:
-  _PROJECT_NUMBE: echo "${PROJECT_NUMBER//[5]/kk}"
 steps:
-  - name: 'ubuntu'
-    args: ['-c', 'echo "${PROJECT_NUMBER//[5]/kk}"']
-  - name: gcr.io/cloud-builders/docker
-    args:
-      - build
-      - '-t'
-      - gcr.io/$PROJECT_ID/cloud-run-cloud-build
-      - .
-  - name: gcr.io/cloud-builders/docker
-    args:
-      - push
-      - gcr.io/$PROJECT_ID/cloud-run-cloud-build
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: gcloud
-    args:
-      - run
-      - deploy
-      - cloud-run-cloud-build
-      - '--image'
-      - gcr.io/$PROJECT_ID/cloud-run-cloud-build
-      - '--region'
-      - europe-west4
-      - --allow-unauthenticated
-      - '--revision-suffix'
-      - $PROJECT_NUMBER
-images:
-  - gcr.io/$PROJECT_ID/cloud-run-cloud-build
+- name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  args: ['echo','${PROJECT_ID}'] # landing-zone-demo-341118
+- name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  args: ['echo','${PROJECT_ID^^}'] # ${PROJECT_ID^^}
+
+  # - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  #   entrypoint: gcloud
+  #   args:
+  #     - run
+  #     - deploy
+  #     - cloud-run-cloud-build
+  #     - '--image'
+  #     - gcr.io/$PROJECT_ID/cloud-run-cloud-build
+  #     - '--region'
+  #     - europe-west4
+  #     - --allow-unauthenticated
+  #     - '--revision-suffix'
+  #     # - ${PROJECT_NUMBER//5/k}
+  #     - ${PROJECT_NUMBER:5}
+  #     # - $PROJECT_NUMBER
+  #     # - '${_PROJECT_NUMBE}'
+options:
+     dynamic_substitutions: true  
