@@ -1,0 +1,12 @@
+steps:
+- name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  args: ['echo','${PROJECT_ID}'] # landing-zone-demo-341118
+- name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  args: ['echo','${_UPPER_PROJECT_ID}'] # LANDING-ZONE-DEMO-341118
+- name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  args: ['echo','${_PROJECT_ID_NEW}'] # landing-zone-demo-3-1118
+substitutions:
+  _UPPER_PROJECT_ID: ${PROJECT_ID^^}
+  _PROJECT_ID_NEW: ${PROJECT_ID//4/-}
+options:
+     dynamic_substitutions: true  
