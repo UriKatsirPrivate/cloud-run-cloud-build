@@ -1,5 +1,7 @@
 steps:
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  args: ['echo','${BUILD_ID}'] # 
+- name: gcr.io/google.com/cloudsdktool/cloud-sdk
   args: ['echo','${PROJECT_ID}'] # landing-zone-demo-341118
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
   args: ['echo','${PROJECT_ID^^}'] # ${PROJECT_ID^^}
